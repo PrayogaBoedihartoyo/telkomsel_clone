@@ -1,4 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:telkomsel_clone/screens/explore/explore.dart';
+import 'package:telkomsel_clone/screens/home/home.dart';
+import 'package:telkomsel_clone/screens/menu/menu.dart';
+import 'package:telkomsel_clone/screens/poin/poin.dart';
+import 'package:telkomsel_clone/screens/shop/shop.dart';
 import 'package:telkomsel_clone/themes.dart';
 
 class ButtonNavBar extends StatefulWidget {
@@ -10,6 +15,14 @@ class ButtonNavBar extends StatefulWidget {
 
 class _ButtonNavBarState extends State<ButtonNavBar> {
   int _selectedIndex = 0;
+
+  final _screens = [
+    const HomePage(),
+    const PoinPage(),
+    const ShopPage(),
+    const ExplorePage(),
+    const MenuPage(),
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -60,7 +73,7 @@ class _ButtonNavBarState extends State<ButtonNavBar> {
                 color: _selectedIndex == 3 ? redColor : greyColor,
               ),
             ),
-            label: 'Paket',
+            label: 'Explore',
           ),
           BottomNavigationBarItem(
             icon: Container(
@@ -69,7 +82,7 @@ class _ButtonNavBarState extends State<ButtonNavBar> {
                 color: _selectedIndex == 4 ? redColor : greyColor,
               ),
             ),
-            label: 'Explore',
+            label: 'Menu',
           ),
         ],
       );
@@ -77,6 +90,7 @@ class _ButtonNavBarState extends State<ButtonNavBar> {
 
     return Scaffold(
       bottomNavigationBar: CustomNavBar(),
+      body: _screens.elementAt(_selectedIndex),
     );
   }
 }
