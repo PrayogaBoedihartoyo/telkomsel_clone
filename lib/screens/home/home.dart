@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:telkomsel_clone/screens/home/components/card_info_1.dart';
 import 'package:telkomsel_clone/themes.dart';
 
 class HomePage extends StatelessWidget {
@@ -81,74 +82,9 @@ class HomePage extends StatelessWidget {
     }
 
     Widget cardInfo() {
-      return Column(
+      return const Column(
         children: [
-          Container(
-            height: 333,
-            margin: const EdgeInsets.only(top: 16, left: 16, right: 16),
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(15), color: whiteColor),
-            child: Column(
-              children: [
-                Expanded(
-                  child: Container(
-                    width: double.infinity,
-                    decoration: BoxDecoration(
-                      color: greyCarColor,
-                      borderRadius: const BorderRadius.only(
-                        topLeft: Radius.circular(15),
-                        topRight: Radius.circular(15),
-                      ),
-                    ),
-                    child: Padding(
-                      padding:
-                          const EdgeInsets.only(left: 17, top: 27, bottom: 21),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text('Rp 0',
-                              style: extraBoldText26.copyWith(
-                                  color: primaryTextColor)),
-                          Text('Active until 22 Sep 2023',
-                              style:
-                                  mediumText12.copyWith(color: darkGreyColor)),
-                          const Spacer(),
-                          Row(
-                            children: [
-                              Container(
-                                padding: const EdgeInsets.symmetric(
-                                    horizontal: 19, vertical: 7),
-                                decoration: BoxDecoration(
-                                  color: redButtonColor,
-                                  borderRadius: BorderRadius.circular(16.5),
-                                ),
-                                child: Text(
-                                  'Buy Package',
-                                  style:
-                                      mediumText12.copyWith(color: whiteColor),
-                                ),
-                              ),
-                              const SizedBox(width: 18),
-                              Text('Top Up',
-                                  style: mediumText12.copyWith(
-                                      color: darkGreyColor)),
-                              const SizedBox(width: 18),
-                              Text('Send Gift',
-                                  style: mediumText12.copyWith(
-                                      color: darkGreyColor)),
-                            ],
-                          )
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
-                Expanded(
-                  child: Container(),
-                )
-              ],
-            ),
-          ),
+          CardInfoHome(),
         ],
       );
     }
