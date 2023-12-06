@@ -1,9 +1,22 @@
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:telkomsel_clone/screens/home/components/card_info_1.dart';
 import 'package:telkomsel_clone/themes.dart';
 
-class HomePage extends StatelessWidget {
+import 'components/card_info_2.dart';
+
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  List cards = [
+    const CardInfoHome(),
+    const CardInfoHome2(),
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -82,9 +95,24 @@ class HomePage extends StatelessWidget {
     }
 
     Widget cardInfo() {
-      return const Column(
+      return Column(
         children: [
-          CardInfoHome(),
+          CarouselSlider(
+            items: cards.map((card) {
+              return Builder(builder: (BuildContext context) {
+                return Container(
+                  width: MediaQuery.of(context).size.width,
+                  margin: const EdgeInsets.symmetric(horizontal: 5.0),
+                  child: card,
+                );
+              });
+            }).toList(),
+            options: CarouselOptions(
+                viewportFraction: 1,
+                height: 333,
+                enableInfiniteScroll: false,
+            ),
+          ),
         ],
       );
     }
