@@ -2,7 +2,6 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:telkomsel_clone/screens/home/components/card_info_1.dart';
 import 'package:telkomsel_clone/themes.dart';
-
 import 'components/card_info_2.dart';
 
 class HomePage extends StatefulWidget {
@@ -17,6 +16,8 @@ class _HomePageState extends State<HomePage> {
     const CardInfoHome(),
     const CardInfoHome2(),
   ];
+
+  int currentIndex = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -94,7 +95,20 @@ class _HomePageState extends State<HomePage> {
       );
     }
 
+    Widget indicator(int index) {
+      return Container(
+        width: currentIndex == index ? 18 : 5, // di render semua
+        height: 5,
+        margin: const EdgeInsets.symmetric(horizontal: 2),
+        decoration: BoxDecoration(
+          color: currentIndex == index ? whiteColor : whiteColor.withOpacity(0.7),
+          borderRadius: BorderRadius.circular(10),
+        ),
+      );
+    }
+
     Widget cardInfo() {
+      int index = -1;
       return Column(
         children: [
           CarouselSlider(
@@ -108,10 +122,23 @@ class _HomePageState extends State<HomePage> {
               });
             }).toList(),
             options: CarouselOptions(
-                viewportFraction: 1,
-                height: 333,
-                enableInfiniteScroll: false,
+              viewportFraction: 1,
+              height: 333,
+              enableInfiniteScroll: false,
+              onPageChanged: (index, reason) {
+                setState(() {
+                  currentIndex = index;
+                });
+              },
             ),
+          ),
+          const SizedBox(height: 15),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: cards.map((e) {
+              index++;
+              return indicator(index);
+            }).toList(),
           ),
         ],
       );
