@@ -108,7 +108,6 @@ class _HomePageState extends State<HomePage> {
     }
 
     Widget cardInfo() {
-      int index = -1;
       return Column(
         children: [
           CarouselSlider(
@@ -135,8 +134,8 @@ class _HomePageState extends State<HomePage> {
           const SizedBox(height: 15),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: cards.map((e) {
-              index++;
+            children: cards.map((card) {
+              int index = cards.indexOf(card);
               return indicator(index);
             }).toList(),
           ),
