@@ -101,7 +101,8 @@ class _HomePageState extends State<HomePage> {
         height: 5,
         margin: const EdgeInsets.symmetric(horizontal: 2),
         decoration: BoxDecoration(
-          color: currentIndex == index ? whiteColor : whiteColor.withOpacity(0.7),
+          color:
+              currentIndex == index ? whiteColor : whiteColor.withOpacity(0.7),
           borderRadius: BorderRadius.circular(10),
         ),
       );
@@ -143,6 +144,65 @@ class _HomePageState extends State<HomePage> {
       );
     }
 
+    Widget recomededForYou() {
+      return Column(
+        children: [
+          Container(
+            margin: const EdgeInsets.only(top: 45, left: 16, right: 16),
+            child: Row(
+              children: [
+                Text(
+                  'Recomended For You',
+                  style: boldText15.copyWith(color: primaryTextColor),
+                ),
+                const Spacer(),
+                Text(
+                  'See All',
+                  style: regulerText12.copyWith(color: blueColor),
+                ),
+              ],
+            ),
+          ),
+          Row(
+            children: [
+              Container(
+                margin: const EdgeInsets.only(top: 20, bottom: 28),
+                height: 131,
+                width: 284,
+                decoration: BoxDecoration(
+                  borderRadius:
+                      const BorderRadius.vertical(top: Radius.circular(24)),
+                  color: whiteColor,
+                  boxShadow: [
+                    BoxShadow(
+                      color: greyColor,
+                      offset: const Offset(0, 1),
+                      blurRadius: 2,
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          )
+        ],
+      );
+    }
+
+    Widget content() {
+      return Container(
+        margin: const EdgeInsets.only(top: 20),
+        decoration: BoxDecoration(
+          color: whiteColor,
+          borderRadius: const BorderRadius.vertical(top: Radius.circular(24)),
+        ),
+        child: Column(
+          children: [
+            recomededForYou(),
+          ],
+        ),
+      );
+    }
+
     return Scaffold(
       body: Container(
         decoration: BoxDecoration(
@@ -161,6 +221,7 @@ class _HomePageState extends State<HomePage> {
           children: [
             header(),
             cardInfo(),
+            content(),
           ],
         ),
       ),
