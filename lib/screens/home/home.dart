@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:telkomsel_clone/screens/home/components/card_info_1.dart';
 import 'package:telkomsel_clone/themes.dart';
 import 'components/card_info_2.dart';
+import 'components/recomended_card.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -163,26 +164,16 @@ class _HomePageState extends State<HomePage> {
               ],
             ),
           ),
-          Row(
-            children: [
-              Container(
-                margin: const EdgeInsets.only(top: 20, bottom: 28),
-                height: 131,
-                width: 284,
-                decoration: BoxDecoration(
-                  borderRadius:
-                      const BorderRadius.vertical(top: Radius.circular(24)),
-                  color: whiteColor,
-                  boxShadow: [
-                    BoxShadow(
-                      color: greyColor,
-                      offset: const Offset(0, 1),
-                      blurRadius: 2,
-                    ),
-                  ],
-                ),
-              ),
-            ],
+          const SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            padding: EdgeInsets.symmetric(horizontal: 16),
+            child: Row(
+              children: [
+                RecomendeCard(title: 'Kuota Ketengan 10GB', date: '29 Jun 2021 13:08:07', price: 'Rp 40,200'),
+                SizedBox(width: 16),
+                RecomendeCard(title: 'Kuota Borongan 10GB', date: '29 Jun 2021 13:08:07', price: 'Rp 42,200'),
+              ],
+            ),
           )
         ],
       );
