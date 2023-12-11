@@ -4,6 +4,7 @@ import 'package:telkomsel_clone/screens/home/components/card_info_1.dart';
 import 'package:telkomsel_clone/themes.dart';
 import 'components/card_info_2.dart';
 import 'components/recomended_card.dart';
+import 'components/whats_new_card.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -179,6 +180,37 @@ class _HomePageState extends State<HomePage> {
       );
     }
 
+    Widget whatsNew(){
+      return Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Padding(
+            padding: const EdgeInsets.only(left: 16, bottom: 14),
+            child: Text('Whats New', style: boldText15.copyWith(color: primaryTextColor),),
+          ),
+          const SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            padding: EdgeInsets.symmetric(horizontal: 16),
+            child: Row(
+              children: [
+                WhatsNewCard(
+                  image: 'assets/images/video.png',
+                  text: 'Package',
+                  title: 'Video Digital Subcription',
+                ),
+                SizedBox(width: 16),
+                WhatsNewCard(
+                  image: 'assets/images/content-bg.png',
+                  text: 'Poin',
+                  title: 'Undi-Undi Hepi',
+                ),
+              ],
+            ),
+          )
+        ],
+      );
+    }
+
     Widget content() {
       return Container(
         margin: const EdgeInsets.only(top: 20),
@@ -189,6 +221,7 @@ class _HomePageState extends State<HomePage> {
         child: Column(
           children: [
             recomededForYou(),
+            whatsNew(),
           ],
         ),
       );
